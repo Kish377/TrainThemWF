@@ -1,29 +1,28 @@
-package OOP_Abstarct;
+package SeleniumSessions;
 
 public class AmazonPageTest {
 
 	public static void main(String[] args) {
 
-		LoginPage lp = new LoginPage();
+		String browserName = "naveen";
 		
-		lp.url();
-		lp.title();
-		lp.header();
-		//lp.logo();
-		Page.logo();
-		lp.loadingTimeOut();
+		BrowserUtil br = new BrowserUtil();
+		br.launchBrowser(browserName);
+		br.launchUrl("http://www.amazon.com");
 		
-		//child class object can be referred by parent abstract class ref variable:
-		//top casting:
+		String title = br.getPageTitle();
+		if(title.contains("Online Shopping")) {
+			System.out.println("correct title");
+		}
+		else {
+			System.out.println("Incorrect title");
+		}
 		
-		Page p = new LoginPage();
-		p.header();
-		p.title();
-		p.url();
-		p.loadingTimeOut();
-		p.logo();
+		if(br.getPageUrl().contains("amazon")) {
+			System.out.println("pointing to right url....");
+		}
 		
-		
+		br.closeBrowser();
 		
 	}
 
